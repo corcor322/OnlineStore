@@ -82,6 +82,8 @@ public class Store {
         // prompt the user to enter the ID of the product they want to add to
         // their cart. The method should
         // add the selected product to the cart ArrayList.
+        System.out.printf("%-15s %-30s %-10s%n", "ID", "Product", "Price");
+        System.out.println("------------------------------------------------------------------------------------------------");
     }
 
     public static void displayCart(ArrayList<Product> cart, Scanner scanner, double totalAmount) {

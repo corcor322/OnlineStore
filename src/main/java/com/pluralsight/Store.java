@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -55,6 +57,23 @@ public class Store {
         //
         // where id is a unique string identifier, name is the product name,
         // price is a double value representing the price of the product
+        try (BufferedReader br = new BufferedReader(new FileReader("products.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split("\\|");
+                if (values.length == 3) {
+                    double price = Double.parseDouble(values[2]);
+                    Product product = new Product(
+                        values[0],
+                        values[1],
+                        price);
+
+
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading file");
+        }
     }
 
     public static void displayProducts(ArrayList<Product> inventory, ArrayList<Product> cart, Scanner scanner) {
@@ -80,11 +99,10 @@ public class Store {
         // from their account if they confirm.
     }
 
-    public static Product findProductById(String id, ArrayList<Product> inventory) {
+    //public static Product findProductById(String id, ArrayList<Product> inventory) {
         // This method should search the inventory ArrayList for a product with
         // the specified ID, and return the corresponding com.pluralsight.Product object. If
         // no product with the specified ID is found, the method should return
         // null.
     }
-}
-}
+//}

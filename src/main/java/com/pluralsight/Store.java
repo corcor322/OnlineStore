@@ -62,12 +62,12 @@ public class Store {
             while ((line = br.readLine()) != null) {
                 String[] values = line.split("\\|");
                 if (values.length == 3) {
+                    String id = values[0];
+                    String name = values[1];
                     double price = Double.parseDouble(values[2]);
-                    Product product = new Product(
-                        values[0],
-                        values[1],
-                        price);
 
+                    Product product = new Product(id, name, price);
+                    inventory.add(product);
 
                 }
             }
@@ -84,6 +84,15 @@ public class Store {
         // add the selected product to the cart ArrayList.
         System.out.printf("%-15s %-30s %-10s%n", "ID", "Product", "Price");
         System.out.println("------------------------------------------------------------------------------------------------");
+
+        for (Product product : inventory) {
+            System.out.printf("%-15s %-30s %-10.2f%n",
+                    product.getId(),
+                    product.getName(),
+                    product.getPrice()
+            );
+        }
+
     }
 
     public static void displayCart(ArrayList<Product> cart, Scanner scanner, double totalAmount) {

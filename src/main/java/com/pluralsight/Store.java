@@ -92,6 +92,9 @@ public class Store {
                     product.getPrice()
             );
         }
+        System.out.println("Type the ID of the product you would like to add to cart");
+        String productToCart = scanner.nextLine();
+        System.out.println("Product " + productToCart + " added to cart successfully.");
 
     }
 
@@ -101,6 +104,18 @@ public class Store {
         // prompt the user to remove items from their cart by entering the ID
         // of the product they want to remove. The method should update the cart ArrayList and totalAmount
         // variable accordingly.
+        if (cart.isEmpty()) {
+            System.out.println("There's nothing in your cart yet.");
+            return;
+        }
+        System.out.printf("%-15s %-30s %-10s%n", "ID", "Product", "Price");
+        for (Product product : cart) {
+            System.out.printf("%-15s %-30s %-10.2f%n",
+                product.getId(),
+                product.getName(),
+                product.getPrice());
+        }
+        System.out.println("Total: " + totalAmount);
     }
 
     public static void checkOut(ArrayList<Product> cart, double totalAmount) {

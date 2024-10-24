@@ -123,6 +123,12 @@ public class Store {
         // and display a summary of the purchase to the user. The method should
         // prompt the user to confirm the purchase, and deduct the total cost
         // from their account if they confirm.
+        if (cart.isEmpty()) {
+            System.out.println("There's nothing in your cart yet.");
+        }
+        for (Product product : cart) {
+            totalAmount += product.getPrice();
+        }
     }
 
     //public static Product findProductById(String id, ArrayList<Product> inventory) {
